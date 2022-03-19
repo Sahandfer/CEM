@@ -1,13 +1,13 @@
 # CEM
 > The official implementation for the paper *CEM: Commonsense-aware Empathetic Response Generation*.
 
-<img src="https://img.shields.io/badge/Venue-AAAI--22-278ea5" alt="venue"/> <img src="https://img.shields.io/badge/Status-Accepted-success" alt="status"/> <img src="https://img.shields.io/badge/Issues-Welcome-red"> <img src="https://img.shields.io/badge/Last%20Updated-2022--01--25-2D333B" alt="update"/>
+<img src="https://img.shields.io/badge/Venue-AAAI--22-278ea5" alt="venue"/> <img src="https://img.shields.io/badge/Status-Accepted-success" alt="status"/> <img src="https://img.shields.io/badge/Issues-Welcome-red"> <img src="https://img.shields.io/badge/Last%20Updated-2022--03--19-2D333B" alt="update"/>
 
 ## Usage
 
 ### Dependencies
 
-Install the required libraries (Python 3.8.5)
+Install the required libraries (Python 3.8.5 | CUDA 10.2)
 
 ```sh
 pip install -r requirements.txt 
@@ -22,10 +22,18 @@ The preprocessed dataset is already provided as `/data/ED/dataset_preproc`. Howe
 ### Training
 
 ```sh
-python main.py --model [model_name] [--woDiv] [--woEMO] [--woCOG] --cuda
+python main.py --model [model_name] [--woDiv] [--woEMO] [--woCOG] [--cuda]
 ```
 
 where model_name could be one of the following: **trs | multi-trs | moel | mime | empdg | cem**. In addition, the extra flags can be used for ablation studies.
+
+## Testing
+
+For reproducibility, download the trained [checkpoint](https://drive.google.com/file/d/1p_Qj5hBQE7e8ailIb5LbZu7NABmeet4k/view?usp=sharing),  put it in a folder named  `saved` and run the following:
+
+```sh
+python main.py --model cem --test --model_path save/CEM_19999_41.8034 [--cuda]
+```
 
 ### Evaluation
 

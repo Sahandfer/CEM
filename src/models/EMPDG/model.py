@@ -541,7 +541,7 @@ class EMPDG(nn.Module):
         if model_file_path is not None:
             print("loading weights")
             state = torch.load(model_file_path, map_location=config.device)
-            weights_best = state["models_g"]
+            weights_best = state["model"]
             self.load_state_dict({name: weights_best[name] for name in weights_best})
             self.eval()
 

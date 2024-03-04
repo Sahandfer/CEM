@@ -1,6 +1,6 @@
 from tqdm import tqdm
 from copy import deepcopy
-from tensorboardX import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 from torch.nn.init import xavier_uniform_
 
 from src.utils import config

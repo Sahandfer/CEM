@@ -607,7 +607,7 @@ def _gen_timing_signal(length, channels, min_timescale=1.0, max_timescale=1.0e4)
         float(num_timescales) - 1
     )
     inv_timescales = min_timescale * np.exp(
-        np.arange(num_timescales).astype(np.float) * -log_timescale_increment
+        np.arange(num_timescales).astype(float) * -log_timescale_increment
     )
     scaled_time = np.expand_dims(position, 1) * np.expand_dims(inv_timescales, 0)
 

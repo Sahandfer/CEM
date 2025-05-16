@@ -697,7 +697,7 @@ def gen_embeddings(vocab):
     if config.emb_file is not None:
         print("Loading embedding file: %s" % config.emb_file)
         pre_trained = 0
-        for line in open(config.emb_file).readlines():
+        for line in open(config.emb_file, encoding='utf-8').readlines():
             sp = line.split()
             if len(sp) == config.emb_dim + 1:
                 if sp[0] in vocab.word2index:

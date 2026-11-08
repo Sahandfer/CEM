@@ -70,7 +70,7 @@ class TextEncoder(object):
             "en_core_web_sm",
             disable=["parser", "tagger", "ner", "textcat", "lemmatizer"],
         )
-        self.encoder = json.load(open(encoder_path))
+        self.encoder = json.load(open(encoder_path, encoding="utf-8"))
         self.decoder = {v: k for k, v in self.encoder.items()}
         merges = open(bpe_path, encoding="utf-8").read().split("\n")[1:-1]
         merges = [tuple(merge.split()) for merge in merges]
@@ -234,15 +234,15 @@ def is_bool(v):
 
 
 def generate_config_files(type_, key, name="base", eval_mode=False):
-    with open("config/default.json".format(type_), "r") as f:
+    with open("config/default.json".format(type_), "r", encoding="utf-8") as f:
         base_config = json.load(f)
-    with open("config/{}/default.json".format(type_), "r") as f:
+    with open("config/{}/default.json".format(type_), "r", encoding="utf-8") as f:
         base_config_2 = json.load(f)
     if eval_mode:
-        with open("config/{}/eval_changes.json".format(type_), "r") as f:
+        with open("config/{}/eval_changes.json".format(type_), "r", encoding="utf-8") as f:
             changes_by_machine = json.load(f)
     else:
-        with open("config/{}/changes.json".format(type_), "r") as f:
+        with open("config/{}/changes.json".format(type_), "r", encoding="utf-8") as f:
             changes_by_machine = json.load(f)
 
     base_config.update(base_config_2)
@@ -259,7 +259,7 @@ def generate_config_files(type_, key, name="base", eval_mode=False):
 
     mkpath("config/{}".format(type_))
 
-    with open("config/{}/config_{}.json".format(type_, key), "w") as f:
+    with open("config/{}/config_{}.json".format(type_, key), "w", encoding="utf-8") as f:
         json.dump(base_config, f, indent=4)
 
 
